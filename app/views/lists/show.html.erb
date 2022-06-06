@@ -1,7 +1,19 @@
 <%= @list.name %>
 <% @list.bookmarks.each do |bookmark| %>
-  <%= bookmark.movie.title %>
-  <%= bookmark.movie.overview %>
-  <%= image_tag bookmark.movie.poster_url, width: 100 %>
-  <%= bookmark.comment %> <%= link_to "Eliminar", bookmark_path(bookmark), method: :delete %>
+
+         <%= image_tag bookmark.movie.poster_url, width: 100, class: "card-image-top" %>
+
+          <%= bookmark.comment %> <%= link_to "Eliminar", bookmark_path(bookmark), method: :delete %>
+
+<% end %>
+<br>
+<%= simple_form_for [@list, @review] do |f|%>
+  <%= f.input :comment %>
+  <%= f.input :rating %>
+  <%= f.submit %>
+<% end %>
+<br>
+<%= @list.reviews.each do |review| %>
+  <%= review.comment %>
+  <%= review.rating %>
 <% end %>
