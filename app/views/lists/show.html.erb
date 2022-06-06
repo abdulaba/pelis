@@ -1,2 +1,7 @@
-<h1>Lists#show</h1>
-<p>Find me in app/views/lists/show.html.erb</p>
+<%= @list.name %>
+<% @list.bookmarks.each do |bookmark| %>
+  <%= bookmark.movie.title %>
+  <%= bookmark.movie.overview %>
+  <%= image_tag bookmark.movie.poster_url, width: 100 %>
+  <%= bookmark.comment %> <%= link_to "Eliminar", bookmark_path(bookmark), method: :delete %>
+<% end %>
