@@ -1,6 +1,7 @@
 
 <%= simple_form_for @list do |f| %>
   <%= f.input :name %>
+  <%= f.input :photo %>
   <%= f.submit @list.new_record? ? "Crear Lista" : "Actualizar Lista", class: "btn btn-success"%>
 <% end %>
 

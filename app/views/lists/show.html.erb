@@ -1,19 +1,18 @@
-<%= @list.name %>
-<% @list.bookmarks.each do |bookmark| %>
+<p class="mt-5">La instrucción <b>@list = List.find(:id)</b> que esta en la acción <b>show</b> del <b>controlador lists</b> permite ocupar esta variable de instancia en la vista show</p>
+<p> @list muestra el objeto -> <%= @list %></p>
+@list.nombre_columna -> permite mostrar el dato que tiene la columna. Ej:
+@list.id -> <%= @list.id %> @list.name -> <%= @list.name %>
+<br></p>
+<p>Gracias a la relación <b>has_many :bookmarks</b> que está en el modelo List, podemos encontrar fácilmente todos los bookmarks que le pertenecen a List. Para ello utilizamos la variable de instancia @list de la siguiente forma:</p>
 
-         <%= image_tag bookmark.movie.poster_url, width: 100, class: "card-image-top" %>
+<b>@list.bookmarks</b> Para ver la información contenida debo usar each.
 
-          <%= bookmark.comment %> <%= link_to "Eliminar", bookmark_path(bookmark), method: :delete %>
-
+@list.bookmarks.each do |nombre_variable|
+  nombre_variable.nombre_columna
+end
+<ul>
+<%@list.bookmarks.each do |bookmark| %>
+  <li><%= bookmark.comment %></li>
+  <%= bookmark.movie.title %>
 <% end %>
-<br>
-<%= simple_form_for [@list, @review] do |f|%>
-  <%= f.input :comment %>
-  <%= f.input :rating %>
-  <%= f.submit %>
-<% end %>
-<br>
-<%= @list.reviews.each do |review| %>
-  <%= review.comment %>
-  <%= review.rating %>
-<% end %>
+</ul>

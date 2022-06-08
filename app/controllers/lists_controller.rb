@@ -5,11 +5,10 @@ class ListsController < ApplicationController
 
   def show
     @list = List.find(params[:id])
-    @review = Review.new(list: @list)
   end
 
   def new
-    @list = List.new
+    @list = List.new(name: "Esto viene de lists#new")
   end
 
   def create
@@ -22,6 +21,7 @@ class ListsController < ApplicationController
   end
 
   def edit
+     @list = List.new(list_params)
   end
 
   def update
